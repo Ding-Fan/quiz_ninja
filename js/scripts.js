@@ -1,11 +1,3 @@
-// welcome the user
-alert("Welcome to Quiz Ninja!");
-
-var question = "What is Superman's real name?"
-var answer = prompt(question)
-
-window.alert('You answered ' + answer)
-
 var quiz = [
   ["What is Superman's real name?", "Clarke Kent"],
   ["What is Wonderwoman's real name?", 'Dianna Prince'],
@@ -13,15 +5,39 @@ var quiz = [
 ]
 
 var score = 0 // initialize score
-var quizNumber = quiz.length
-for (var i = 0; i < quizNumber; i++) {
-  var answer = window.prompt(quiz[i][0])
-  if (answer === quiz[i][1]) {
-    window.alert('Correct!')
-    score++
-  } else {
-    window.alert('Wrong!')
+
+play(quiz)
+
+function play (quiz) {
+  // main game loop
+  var quizNumber = quiz.length
+  for (var i = 0; i < quizNumber; i++) {
+    var question = quiz[i][0]
+    var answer = ask(question)
+    check(answer)
+  }
+  // end of main game loop
+  gameOver()
+
+  function ask (question) {
+    return window.prompt(question)
+  }
+
+  function check (answer) {
+    if (answer === quiz[i][1]) {
+      window.alert('Correct!')
+      score++
+    } else {
+      window.alert('Wrong!')
+    }
+  }
+
+  function gameOver () {
+    window.alert('Your score is ' + score)
   }
 }
 
-window.alert('Your score is ' + score)
+
+
+
+
